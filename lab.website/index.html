@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+                AI Assistant
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Your intelligent companion for resume building, email writing, and interview preparation
+            </p>
+        </header>
+
+        <!-- Navigation Cards -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Resume Builder Card -->
+            <div class="group">
+                <a href="resume-builder.html" class="block">
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 border border-gray-100">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Resume Builder</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Create professional resumes with AI-powered content generation and formatting
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Email Writer Card -->
+            <div class="group">
+                <a href="email-writer.html" class="block">
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 border border-gray-100">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Email Writer</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Generate professional emails with context-aware content and tone adjustment
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Interview Help Card -->
+            <div class="group">
+                <a href="interview-help.html" class="block">
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 border border-gray-100">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Interview Help</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Get role-specific interview questions and preparation guidance
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- API Key Management -->
+        <div class="max-w-md mx-auto mt-12 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">API Configuration</h3>
+            <div class="space-y-4">
+                <div>
+                    <label for="apiKey" class="block text-sm font-medium text-gray-700 mb-2">Groq API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Groq API key"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="saveApiKey()" class="flex-1 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                        Save API Key
+                    </button>
+                    <button onclick="testApiKey()" class="flex-1 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        Test Connection
+                    </button>
+                </div>
+                <div class="flex gap-2 mt-2">
+                    <button onclick="testResumeGeneration()" class="flex-1 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors">
+                        Test Resume Generation
+                    </button>
+                    <button onclick="testSimpleConnection()" class="flex-1 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                        Simple Test
+                    </button>
+                </div>
+                <div id="apiStatus" class="text-sm"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 text-gray-500">
+            <p>&copy; 2024 AI Assistant. Powered by Groq.</p>
+        </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script>
+        // Load saved API key on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedKey = localStorage.getItem('groq_api_key');
+            if (savedKey) {
+                document.getElementById('apiKey').value = savedKey;
+                updateApiStatus('API key loaded from storage', 'success');
+            } else {
+                // Set the default API key if none is saved
+                const defaultKey = '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';
+                document.getElementById('apiKey').value = defaultKey;
+                setApiKey(defaultKey);
+                updateApiStatus('Default API key loaded and saved', 'success');
+            }
+        });
+
+        function saveApiKey() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            if (!apiKey) {
+                updateApiStatus('Please enter an API key', 'error');
+                return;
+            }
+            
+            setApiKey(apiKey);
+            updateApiStatus('API key saved successfully!', 'success');
+        }
+
+        function testApiKey() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            if (!apiKey) {
+                updateApiStatus('Please enter an API key first', 'error');
+                return;
+            }
+
+            updateApiStatus('Testing connection...', 'info');
+            
+            // Test the API with a simple request
+            const messages = [
+                {
+                    role: 'user',
+                    content: 'Hello, this is a test message. Please respond with "Connection successful!"'
+                }
+            ];
+
+            callGroqAPI(messages, 50, 0.1)
+                .then(response => {
+                    console.log('Test response:', response);
+                    if (response.includes('Connection successful') || response.includes('successful')) {
+                        updateApiStatus('✅ Connection successful! API key is working.', 'success');
+                    } else {
+                        updateApiStatus(`✅ Connection established! Response: ${response.substring(0, 100)}...`, 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Test failed:', error);
+                    updateApiStatus(`❌ Connection failed: ${error.message}`, 'error');
+                });
+        }
+
+        function testSimpleConnection() {
+            updateApiStatus('Testing simple connection...', 'info');
+            
+            // Test with minimal request
+            const messages = [
+                {
+                    role: 'user',
+                    content: 'Say "test"'
+                }
+            ];
+
+            callGroqAPI(messages, 10, 0.1)
+                .then(response => {
+                    console.log('Simple test response:', response);
+                    updateApiStatus(`✅ Simple test successful! Response: "${response}"`, 'success');
+                })
+                .catch(error => {
+                    console.error('Simple test failed:', error);
+                    updateApiStatus(`❌ Simple test failed: ${error.message}`, 'error');
+                });
+        }
+
+        function updateApiStatus(message, type) {
+            const statusDiv = document.getElementById('apiStatus');
+            const colors = {
+                success: 'text-green-600',
+                error: 'text-red-600',
+                warning: 'text-yellow-600',
+                info: 'text-blue-600'
+            };
+            
+            statusDiv.className = `text-sm ${colors[type] || 'text-gray-600'}`;
+            statusDiv.textContent = message;
+        }
+
+        function testResumeGeneration() {
+            updateApiStatus('Testing resume generation...', 'info');
+            
+            const testData = {
+                name: 'John Doe',
+                email: 'john.doe@example.com',
+                phone: '+1-555-0123',
+                skills: 'JavaScript, React, Node.js, Python',
+                education: 'Bachelor of Computer Science, University of Example, 2020',
+                experience: 'Software Developer at Tech Corp (2020-2023), Junior Developer at Startup Inc (2018-2020)'
+            };
+
+            const prompt = `Create a professional resume for ${testData.name} with the following information:
+
+Contact Information:
+- Name: ${testData.name}
+- Email: ${testData.email}
+- Phone: ${testData.phone}
+
+Skills: ${testData.skills}
+
+Education: ${testData.education}
+
+Work Experience: ${testData.experience}
+
+Please format this as a professional resume with clear sections, bullet points for achievements, and professional language. Include a professional summary at the top.`;
+
+            const messages = [
+                {
+                    role: 'system',
+                    content: 'You are a professional resume writer. Create well-formatted, professional resumes that highlight skills and achievements.'
+                },
+                {
+                    role: 'user',
+                    content: prompt
+                }
+            ];
+
+            callGroqAPI(messages, 1500, 0.7)
+                .then(response => {
+                    console.log('Resume generation test response:', response);
+                    updateApiStatus('✅ Resume generation test successful! Check console for full response.', 'success');
+                })
+                .catch(error => {
+                    console.error('Resume generation test failed:', error);
+                    updateApiStatus(`❌ Resume generation test failed: ${error.message}`, 'error');
+                });
+        }
+    </script>
+</body>
+</html> 

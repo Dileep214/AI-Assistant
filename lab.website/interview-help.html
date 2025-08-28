@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Help - AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Navigation -->
+        <nav class="mb-8">
+            <a href="index.html" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Home
+            </a>
+        </nav>
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+                Interview Help
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Get role-specific interview questions and preparation guidance
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <!-- Input Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Interview Preparation</h2>
+                
+                <form id="interviewForm" class="space-y-6">
+                    <div>
+                        <label for="jobRole" class="block text-sm font-medium text-gray-700 mb-2">Job Role</label>
+                        <select id="jobRole" name="jobRole" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            <option value="">Select a job role</option>
+                            <option value="software-engineer">Software Engineer</option>
+                            <option value="frontend-developer">Frontend Developer</option>
+                            <option value="backend-developer">Backend Developer</option>
+                            <option value="fullstack-developer">Full Stack Developer</option>
+                            <option value="data-scientist">Data Scientist</option>
+                            <option value="product-manager">Product Manager</option>
+                            <option value="ui-ux-designer">UI/UX Designer</option>
+                            <option value="devops-engineer">DevOps Engineer</option>
+                            <option value="qa-engineer">QA Engineer</option>
+                            <option value="project-manager">Project Manager</option>
+                            <option value="business-analyst">Business Analyst</option>
+                            <option value="marketing-manager">Marketing Manager</option>
+                            <option value="sales-representative">Sales Representative</option>
+                            <option value="customer-service">Customer Service</option>
+                            <option value="human-resources">Human Resources</option>
+                            <option value="finance-analyst">Finance Analyst</option>
+                            <option value="legal-assistant">Legal Assistant</option>
+                            <option value="nurse">Nurse</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="other">Other (specify below)</option>
+                        </select>
+                    </div>
+
+                    <div id="customRoleDiv" class="hidden">
+                        <label for="customRole" class="block text-sm font-medium text-gray-700 mb-2">Custom Job Role</label>
+                        <input type="text" id="customRole" name="customRole"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                               placeholder="Enter your specific job role">
+                    </div>
+
+                    <div>
+                        <label for="experienceLevel" class="block text-sm font-medium text-gray-700 mb-2">Experience Level</label>
+                        <select id="experienceLevel" name="experienceLevel" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            <option value="">Select experience level</option>
+                            <option value="entry-level">Entry Level (0-2 years)</option>
+                            <option value="mid-level">Mid Level (3-5 years)</option>
+                            <option value="senior">Senior Level (6-10 years)</option>
+                            <option value="lead">Lead/Manager (10+ years)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="interviewType" class="block text-sm font-medium text-gray-700 mb-2">Interview Type</label>
+                        <select id="interviewType" name="interviewType" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            <option value="">Select interview type</option>
+                            <option value="technical">Technical Interview</option>
+                            <option value="behavioral">Behavioral Interview</option>
+                            <option value="general">General Interview</option>
+                            <option value="case-study">Case Study Interview</option>
+                            <option value="system-design">System Design Interview</option>
+                            <option value="coding">Coding Interview</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="additionalContext" class="block text-sm font-medium text-gray-700 mb-2">Additional Context (optional)</label>
+                        <textarea id="additionalContext" name="additionalContext" rows="3"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                  placeholder="Any specific company, industry, or context you'd like to include..."></textarea>
+                    </div>
+
+
+
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Get Interview Questions
+                    </button>
+                </form>
+            </div>
+
+            <!-- Output Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Interview Questions</h2>
+                
+                <div id="interviewOutput" class="space-y-6">
+                    <div class="text-center text-gray-500 py-12">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-lg">Select your job role and experience level to get personalized interview questions</p>
+                    </div>
+                </div>
+
+                <div id="loadingSpinner" class="hidden text-center py-8">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                    <p class="mt-4 text-gray-600">Generating interview questions...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/interview-help.js"></script>
+</body>
+</html> 
